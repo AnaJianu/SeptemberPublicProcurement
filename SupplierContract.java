@@ -3,11 +3,18 @@
  */
 public class SupplierContract {
 
-    private String contractorName;
-
-    private String address;
+    private String supplierName;
 
 
+    public SupplierContract(String supplierName){
+        this.supplierName=supplierName;
 
+    }
 
+    @Override
+    public String toString() {
+        return "SupplierContract{" +
+                "supplierName='" + supplierName + '\'' +
+                '}';
+    }
 }

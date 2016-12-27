@@ -4,7 +4,22 @@
 public class BeneficiaryContract {
 
     private String beneficiaryName;
-    private String beneficiaryCode;
     private String beneficiaryRegion;
     private String beneficiaryAddress;
+
+    public BeneficiaryContract(String beneficiaryName,String beneficiaryRegion,
+                               String beneficiaryAddress) {
+        this.beneficiaryName=beneficiaryName;
+        this.beneficiaryRegion=beneficiaryRegion;
+        this.beneficiaryAddress=beneficiaryAddress;
+    }
+
+    @Override
+    public String toString() {
+        return "BeneficiaryContract{" +
+                "beneficiaryName='" + beneficiaryName + '\'' +
+                ", beneficiaryRegion='" + beneficiaryRegion + '\'' +
+                ", beneficiaryAddress='" + beneficiaryAddress + '\'' +
+                '}';
+    }
 }

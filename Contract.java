@@ -1,13 +1,10 @@
 import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStreamReader;
-import java.net.URL;
+
 
 public class Contract {
 
-    private int ID;
+
 
     private String contractNumber;
 
@@ -21,18 +18,41 @@ public class Contract {
     private String contractType;
     private String procedureType;
 
-    public void readDataFromURL() throws Exception{
-        URL dataGovRo= new URL("http://data.gv.ro/dataset/69c6a6a8-e129-4bad-ac25-aa9512907807/resource/009028e3-86c1-4daa-ac36-1535e8e3c77c/download/contracteanonimizate.csv");
+    public Contract(String contractNumber, String objectContract, String startDate, String endDate,
+                    String contractValue, BeneficiaryContract beneficiaryContract, SupplierContract supplierContract, String contractType, String procedureType) {
 
-        BufferedReader in= new BufferedReader(new InputStreamReader(dataGovRo.openStream()));
-
-        String inputLine;
-        while ((inputLine=in.readLine()) !=null)
-            System.out.println(inputLine);
-        in.close();
+        this.contractNumber=contractNumber;
+        this.objectContract=objectContract;
+        this.startDate=startDate;
+        this.endDate=endDate;
+        this.contractValue=contractValue;
+        this.beneficiaryContract=beneficiaryContract;
+        this.supplierContract=supplierContract;
+        this.contractType=contractType;
+        this.procedureType=procedureType;
     }
 
+    public double getValue() {
+        try {
+            return Double.parseDouble(contractValue);
+        }
+        catch (NumberFormatException nfe) {
+            return Double.NaN;
+        }
+    }
 
-
-
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "contractNumber='" + contractNumber + '\'' +
+                ", objectContract='" + objectContract + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", contractValue='" + contractValue + '\'' +
+                ", beneficiaryContract=" + beneficiaryContract +
+                ", supplierContract=" + supplierContract +
+                ", contractType='" + contractType + '\'' +
+                ", procedureType='" + procedureType + '\'' +
+                '}';
+    }
 }
